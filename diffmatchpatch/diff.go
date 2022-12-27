@@ -542,7 +542,7 @@ func (dmp *DiffMatchPatch) diffHalfMatch(text1, text2 []rune) [][]rune {
 	// Check again based on the third quarter.
 	hm2 := dmp.diffHalfMatchI(longtext, shorttext, int(float64(len(longtext)+1)/2))
 
-	hm := [][]rune{}
+	var hm [][]rune
 	if hm1 == nil && hm2 == nil {
 		return nil
 	} else if hm2 == nil {
@@ -730,7 +730,6 @@ var (
 	whitespaceRegex      = regexp.MustCompile(`\s`)
 	linebreakRegex       = regexp.MustCompile(`[\r\n]`)
 	blanklineEndRegex    = regexp.MustCompile(`\n\r?\n$`)
-	blanklineStartRegex  = regexp.MustCompile(`^\r?\n\r?\n`)
 )
 
 // diffCleanupSemanticScore computes a score representing whether the internal boundary falls on logical boundaries.
@@ -977,12 +976,10 @@ func (dmp *DiffMatchPatch) DiffCleanupMerge(diffs []Diff) []Diff {
 			countInsert++
 			textInsert = append(textInsert, []rune(diffs[pointer].Text)...)
 			pointer++
-			break
 		case DiffDelete:
 			countDelete++
 			textDelete = append(textDelete, []rune(diffs[pointer].Text)...)
 			pointer++
-			break
 		case DiffEqual:
 			// Upon reaching an equality, check for prior redundancies.
 			if countDelete+countInsert > 1 {
@@ -1044,7 +1041,6 @@ func (dmp *DiffMatchPatch) DiffCleanupMerge(diffs []Diff) []Diff {
 			countDelete = 0
 			textDelete = nil
 			textInsert = nil
-			break
 		}
 	}
 
@@ -1226,17 +1222,14 @@ func (dmp *DiffMatchPatch) DiffToDelta(diffs []Diff) string {
 			_, _ = text.WriteString("+")
 			_, _ = text.WriteString(strings.Replace(url.QueryEscape(aDiff.Text), "+", " ", -1))
 			_, _ = text.WriteString("\t")
-			break
 		case DiffDelete:
 			_, _ = text.WriteString("-")
 			_, _ = text.WriteString(strconv.Itoa(utf8.RuneCountInString(aDiff.Text)))
 			_, _ = text.WriteString("\t")
-			break
 		case DiffEqual:
 			_, _ = text.WriteString("=")
 			_, _ = text.WriteString(strconv.Itoa(utf8.RuneCountInString(aDiff.Text)))
 			_, _ = text.WriteString("\t")
-			break
 		}
 	}
 	delta := text.String()
