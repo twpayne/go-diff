@@ -66,8 +66,8 @@ func TestPatchFromText(t *testing.T) {
 		{"@@ -1 +1 @@\n-a\n+b\n", ""},
 		{"@@ -1,3 +0,0 @@\n-abc\n", ""},
 		{"@@ -0,0 +1,3 @@\n+abc\n", ""},
-		{"@@ _0,0 +0,0 @@\n+abc\n", "Invalid patch string: @@ _0,0 +0,0 @@"},
-		{"Bad\nPatch\n", "Invalid patch string"},
+		{"@@ _0,0 +0,0 @@\n+abc\n", "invalid patch string: @@ _0,0 +0,0 @@"},
+		{"Bad\nPatch\n", "invalid patch string"},
 	} {
 		patches, err := dmp.PatchFromText(tc.Patch)
 		if tc.ErrorMessagePrefix == "" {

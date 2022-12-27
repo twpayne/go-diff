@@ -491,7 +491,7 @@ func (dmp *DiffMatchPatch) PatchFromText(textline string) ([]Patch, error) {
 	for textPointer < len(text) {
 
 		if !patchHeader.MatchString(text[textPointer]) {
-			return patches, errors.New("Invalid patch string: " + text[textPointer])
+			return patches, errors.New("invalid patch string: " + text[textPointer])
 		}
 
 		patch = Patch{}
@@ -546,7 +546,7 @@ func (dmp *DiffMatchPatch) PatchFromText(textline string) ([]Patch, error) {
 				break
 			} else {
 				// WTF?
-				return patches, errors.New("Invalid patch mode '" + string(sign) + "' in: " + string(line))
+				return patches, errors.New("invalid patch mode '" + string(sign) + "' in: " + string(line))
 			}
 			textPointer++
 		}

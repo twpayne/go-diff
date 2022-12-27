@@ -1273,7 +1273,7 @@ func (dmp *DiffMatchPatch) DiffFromDelta(text1 string, delta string) (diffs []Di
 			if err != nil {
 				return nil, err
 			} else if n < 0 {
-				return nil, errors.New("Negative number in DiffFromDelta: " + param)
+				return nil, errors.New("negative number in DiffFromDelta: " + param)
 			}
 
 			i += int(n)
@@ -1291,12 +1291,12 @@ func (dmp *DiffMatchPatch) DiffFromDelta(text1 string, delta string) (diffs []Di
 			}
 		default:
 			// Anything else is an error.
-			return nil, errors.New("Invalid diff operation in DiffFromDelta: " + string(token[0]))
+			return nil, errors.New("invalid diff operation in DiffFromDelta: " + string(token[0]))
 		}
 	}
 
 	if i != len(runes) {
-		return nil, fmt.Errorf("Delta length (%v) is different from source text length (%v)", i, len(text1))
+		return nil, fmt.Errorf("delta length (%v) is different from source text length (%v)", i, len(text1))
 	}
 
 	return diffs, nil
