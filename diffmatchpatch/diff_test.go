@@ -11,7 +11,6 @@ package diffmatchpatch
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"strconv"
 	"strings"
@@ -1433,7 +1432,7 @@ func TestDiffMainWithCheckLines(t *testing.T) {
 }
 
 func TestMassiveRuneDiffConversion(t *testing.T) {
-	sNew, err := ioutil.ReadFile("../testdata/fixture.go")
+	sNew, err := os.ReadFile("../testdata/fixture.go")
 	if err != nil {
 		panic(err)
 	}
@@ -1493,9 +1492,7 @@ func BenchmarkDiffMainRunesLargeLines(b *testing.B) {
 }
 
 func BenchmarkDiffMainRunesLargeDiffLines(b *testing.B) {
-	fp, _ := os.Open("../testdata/diff10klinestest.txt")
-	defer fp.Close()
-	data, _ := ioutil.ReadAll(fp)
+	data, _ := os.ReadFile("../testdata/diff10klinestest.txt")
 
 	dmp := New()
 
