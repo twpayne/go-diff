@@ -51,12 +51,7 @@ Please make sure to have the latest version of go-diff. If the problem still per
 
 You want to contribute to go-diff? GREAT! If you are here because of a bug you want to fix or a feature you want to add, you can just read on. Otherwise we have a list of [open issues in the tracker](https://github.com/twpayne/go-diff/issues). Just choose something you think you can work on and discuss your plans in the issue by commenting on it.
 
-Please make sure that every behavioral change is accompanied by test cases. Additionally, every contribution must pass the `lint` and `test` Makefile targets which can be run using the following commands in the repository root directory.
-
-```bash
-make lint
-make test
-```
+Please make sure that every behavioral change is accompanied by test cases.
 
 After your contribution passes these commands, [create a PR](https://help.github.com/articles/creating-a-pull-request/) and we will review your contribution.
 
