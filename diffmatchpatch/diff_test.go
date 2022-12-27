@@ -10,7 +10,6 @@
 package diffmatchpatch
 
 import (
-	"bytes"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -21,30 +20,8 @@ import (
 	"unicode/utf8"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
-
-func pretty(diffs []Diff) string {
-	var w bytes.Buffer
-
-	for i, diff := range diffs {
-		_, _ = w.WriteString(fmt.Sprintf("%v. ", i))
-
-		switch diff.Type {
-		case DiffInsert:
-			_, _ = w.WriteString("DiffIns")
-		case DiffDelete:
-			_, _ = w.WriteString("DiffDel")
-		case DiffEqual:
-			_, _ = w.WriteString("DiffEql")
-		default:
-			_, _ = w.WriteString("Unknown")
-		}
-
-		_, _ = w.WriteString(fmt.Sprintf(": %v\n", diff.Text))
-	}
-
-	return w.String()
-}
 
 func diffRebuildTexts(diffs []Diff) []string {
 	texts := []string{"", ""}
@@ -1128,6 +1105,7 @@ func TestDiffDelta(t *testing.T) {
 
 	// Convert delta string into a diff.
 	deltaDiffs, err := dmp.DiffFromDelta(text1, delta)
+	require.NoError(t, err)
 	assert.Equal(t, diffs, deltaDiffs)
 
 	// Test deltas with special characters.
@@ -1510,7 +1488,7 @@ func BenchmarkDiffMainRunesLargeLines(b *testing.B) {
 		text1, text2, linearray := dmp.DiffLinesToRunes(s1, s2)
 
 		diffs := dmp.DiffMainRunes(text1, text2, false)
-		diffs = dmp.DiffCharsToLines(diffs, linearray)
+		_ = dmp.DiffCharsToLines(diffs, linearray)
 	}
 }
 
@@ -1527,6 +1505,6 @@ func BenchmarkDiffMainRunesLargeDiffLines(b *testing.B) {
 		text1, text2, linearray := dmp.DiffLinesToRunes(string(data), "")
 
 		diffs := dmp.DiffMainRunes(text1, text2, false)
-		diffs = dmp.DiffCharsToLines(diffs, linearray)
+		_ = dmp.DiffCharsToLines(diffs, linearray)
 	}
 }

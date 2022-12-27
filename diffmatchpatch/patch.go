@@ -483,7 +483,7 @@ func (dmp *DiffMatchPatch) PatchFromText(textline string) ([]Patch, error) {
 	}
 	text := strings.Split(textline, "\n")
 	textPointer := 0
-	patchHeader := regexp.MustCompile("^@@ -(\\d+),?(\\d*) \\+(\\d+),?(\\d*) @@$")
+	patchHeader := regexp.MustCompile(`^@@ -(\d+),?(\d*) \+(\d+),?(\d*) @@$`)
 
 	var patch Patch
 	var sign uint8
