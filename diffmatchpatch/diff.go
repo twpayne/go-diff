@@ -160,9 +160,9 @@ func (dmp *DiffMatchPatch) diffCompute(text1, text2 []rune, checklines bool, dea
 		}
 		// Shorter text is inside the longer text (speedup).
 		return []Diff{
-			Diff{op, string(longtext[:i])},
-			Diff{DiffEqual, string(shorttext)},
-			Diff{op, string(longtext[i+len(shorttext):])},
+			{op, string(longtext[:i])},
+			{DiffEqual, string(shorttext)},
+			{op, string(longtext[i+len(shorttext):])},
 		}
 	} else if len(shorttext) == 1 {
 		// Single character string.
@@ -1273,7 +1273,7 @@ func (dmp *DiffMatchPatch) DiffFromDelta(text1 string, delta string) (diffs []Di
 			if err != nil {
 				return nil, err
 			} else if n < 0 {
-				return nil, errors.New("Negative number in DiffFromDelta: " + param)
+				return nil, errors.New("negative number in DiffFromDelta: " + param)
 			}
 
 			i += int(n)
@@ -1291,12 +1291,12 @@ func (dmp *DiffMatchPatch) DiffFromDelta(text1 string, delta string) (diffs []Di
 			}
 		default:
 			// Anything else is an error.
-			return nil, errors.New("Invalid diff operation in DiffFromDelta: " + string(token[0]))
+			return nil, errors.New("invalid diff operation in DiffFromDelta: " + string(token[0]))
 		}
 	}
 
 	if i != len(runes) {
-		return nil, fmt.Errorf("Delta length (%v) is different from source text length (%v)", i, len(text1))
+		return nil, fmt.Errorf("delta length (%v) is different from source text length (%v)", i, len(text1))
 	}
 
 	return diffs, nil
