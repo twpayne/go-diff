@@ -1,4 +1,8 @@
-# go-diff [![GoDoc](https://godoc.org/github.com/sergi/go-diff?status.png)](https://godoc.org/github.com/sergi/go-diff/diffmatchpatch) [![Build Status](https://travis-ci.org/sergi/go-diff.svg?branch=master)](https://travis-ci.org/sergi/go-diff) [![Coverage Status](https://coveralls.io/repos/sergi/go-diff/badge.png?branch=master)](https://coveralls.io/r/sergi/go-diff?branch=master)
+# go-diff
+
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/twpayne/go-diff)](https://pkg.go.dev/github.com/twpayne/go-diff)
+
+This is a fork of [github.com/sergi/go-diff](https://github.com/sergi/go-diff).
 
 go-diff offers algorithms to perform operations required for synchronizing plain text:
 
@@ -9,7 +13,7 @@ go-diff offers algorithms to perform operations required for synchronizing plain
 ## Installation
 
 ```bash
-go get -u github.com/sergi/go-diff/...
+go get -u github.com/twpayne/go-diff/...
 ```
 
 ## Usage
@@ -22,7 +26,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/sergi/go-diff/diffmatchpatch"
+	"github.com/twpayne/go-diff/diffmatchpatch"
 )
 
 const (
@@ -41,11 +45,11 @@ func main() {
 
 ## Found a bug or are you missing a feature in go-diff?
 
-Please make sure to have the latest version of go-diff. If the problem still persists go through the [open issues](https://github.com/sergi/go-diff/issues) in the tracker first. If you cannot find your request just open up a [new issue](https://github.com/sergi/go-diff/issues/new).
+Please make sure to have the latest version of go-diff. If the problem still persists go through the [open issues](https://github.com/twpayne/go-diff/issues) in the tracker first. If you cannot find your request just open up a [new issue](https://github.com/twpayne/go-diff/issues/new).
 
 ## How to contribute?
 
-You want to contribute to go-diff? GREAT! If you are here because of a bug you want to fix or a feature you want to add, you can just read on. Otherwise we have a list of [open issues in the tracker](https://github.com/sergi/go-diff/issues). Just choose something you think you can work on and discuss your plans in the issue by commenting on it.
+You want to contribute to go-diff? GREAT! If you are here because of a bug you want to fix or a feature you want to add, you can just read on. Otherwise we have a list of [open issues in the tracker](https://github.com/twpayne/go-diff/issues). Just choose something you think you can work on and discuss your plans in the issue by commenting on it.
 
 Please make sure that every behavioral change is accompanied by test cases. Additionally, every contribution must pass the `lint` and `test` Makefile targets which can be run using the following commands in the repository root directory.
 
@@ -74,8 +78,9 @@ This Go version of Diff, Match and Patch Library is licensed under the [MIT Lice
 
 Go version of Diff, Match and Patch Library
 
-> Copyright (c) 2012-2016 The go-diff authors. All rights reserved.
+> Copyright (c) 2012-2022 The go-diff authors. All rights reserved.
 > <https://github.com/sergi/go-diff>
+> <https://github.com/twpayne/go-diff>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
