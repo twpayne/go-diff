@@ -1432,7 +1432,7 @@ func TestDiffMainWithCheckLines(t *testing.T) {
 }
 
 func TestMassiveRuneDiffConversion(t *testing.T) {
-	sNew, err := os.ReadFile("../testdata/fixture.go")
+	sNew, err := os.ReadFile("testdata/fixture.go")
 	if err != nil {
 		panic(err)
 	}
@@ -1492,7 +1492,7 @@ func BenchmarkDiffMainRunesLargeLines(b *testing.B) {
 }
 
 func BenchmarkDiffMainRunesLargeDiffLines(b *testing.B) {
-	data, _ := os.ReadFile("../testdata/diff10klinestest.txt")
+	data, _ := os.ReadFile("testdata/diff10klinestest.txt")
 
 	dmp := New()
 
